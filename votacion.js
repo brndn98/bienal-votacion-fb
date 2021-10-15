@@ -6,7 +6,12 @@ window.fbAsyncInit = function () {
         version: "v12.0",
     });
 
-    FB.login(function (response) {
+    FB.getLoginStatus(function (response) {
+        //statusChangeCallback(response);
+        console.log(response);
+    });
+
+    /* FB.login(function (response) {
         if (response.authResponse) {
             console.log("Welcome!  Fetching your information.... ");
             FB.api("/me", function (response) {
@@ -15,5 +20,5 @@ window.fbAsyncInit = function () {
         } else {
             console.log("User cancelled login or did not fully authorize.");
         }
-    });
+    }); */
 };
