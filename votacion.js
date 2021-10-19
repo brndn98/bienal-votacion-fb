@@ -1,5 +1,5 @@
 window.addEventListener("load", function () {
-    fetch("http://bienalnuevoleon.com/wp-json/wp/v2/estudiantil", {
+    fetch("https://bienalnuevoleon.com/wp-json/wp/v2/estudiantil", {
         method: "GET",
         mode: "no-cors",
         credentials: "omit",
