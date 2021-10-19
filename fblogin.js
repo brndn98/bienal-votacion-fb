@@ -8,7 +8,16 @@ window.fbAsyncInit = function () {
 
     // checks if user is already logged in on facebook
     FB.getLoginStatus(function (response) {
+        var votingContainer = document.querySelector("#voting-container");
         console.log(response);
+
+        if (votingContainer) {
+            if (response.status === "connected") {
+                votingContainer.setAttribute("data-user", response.authResponse.userID);
+            } else {
+                window.location.href = votingContainer.getAttribute("data-url");
+            }
+        }
     });
 
     /* FB.login(function (response) {

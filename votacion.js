@@ -47,18 +47,25 @@ window.addEventListener("load", function () {
             var div = document.createElement("div");
 
             var p = document.createElement("p");
+            p.style.display = "inline-block";
             var b = document.createElement("b");
             b.textContent = post.id + " - " + post.title + " - ";
             p.appendChild(b);
-            var vote = document.createElement("button");
-            vote.textContent = "votar";
-            vote.addEventListener("click", function (event) {
+            var v = document.createElement("button");
+            v.textContent = "votar";
+            v.addEventListener("click", function (event) {
                 var button = event.target;
                 alert("proyecto " + post.id + " seleccionado");
+                var userID = container.getAttribute("data-user");
+                var vote = {
+                    user: userID,
+                    post: post.title,
+                };
+                sessionStorage.setItem("bienal-vote", JSON.stringify(vote));
             });
 
             div.appendChild(p);
-            div.appendChild(vote);
+            div.appendChild(v);
 
             container.appendChild(div);
         });
