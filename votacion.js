@@ -6,8 +6,9 @@ window.fbAsyncInit = function () {
         version: "v12.0",
     });
 
+    // checks if user is already logged in on facebook
     FB.getLoginStatus(function (response) {
-        // checks if user is already logged in on facebook
+        console.log(response);
         if (response.status === "connected") {
             FB.logout(function (res) {
                 console.log("logged out");
@@ -19,7 +20,6 @@ window.fbAsyncInit = function () {
                 console.log(res);
             });
         }
-        console.log(response);
     });
 
     /* FB.login(function (response) {
