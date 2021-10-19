@@ -17,7 +17,7 @@ window.addEventListener("load", function () {
         fetch(base + "profesional?per_page=15")
             .then((res) => res.json())
             .then((data) => {
-                var profesionales = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, category: post.categoria_curatorial })) : false;
+                var profesionales = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, type: post.type, category: post.categoria_curatorial })) : false;
                 fetchEstudiantil(base, categories, profesionales);
             })
             .catch((error) => console.log(error));
@@ -27,7 +27,7 @@ window.addEventListener("load", function () {
         fetch(base + "estudiantil?per_page=15")
             .then((res) => res.json())
             .then((data) => {
-                var estudiantiles = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, category: post.categoria_curatorial })) : false;
+                var estudiantiles = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, type: post.type, category: post.categoria_curatorial })) : false;
                 var posts = profesionales.concat(estudiantiles);
                 setVotingData(categories, posts);
             })
@@ -37,5 +37,39 @@ window.addEventListener("load", function () {
     function setVotingData(categories, posts) {
         console.log(categories);
         console.log(posts);
+
+        var container = document.querySelector("#voting-container");
+
+        var filtered = posts.filter((post) => post.category.length > 0);
+        var shuffled = shuffleArray(filtered);
+
+        shuffled.forEach((post) => {
+            var div = document.createElement("div");
+
+            var p = document.createElement("p");
+            var b = document.createElement("b");
+            b.textContent = post.id + " - " + post.title + " - ";
+            p.appendChild(b);
+            var vote = document.createElement("button");
+            vote.textContent = "votar";
+            vote.addEventListener("click", function (event) {
+                var button = event.target;
+                alert("proyecto " + post.id + " seleccionado");
+            });
+
+            div.appendChild(p);
+            div.appendChild(vote);
+
+            container.appendChild(div);
+        });
+    }
+
+    function shuffleArray(array) {
+        var shuffledArray = array
+            .map((item) => ({ item, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map((shuffledItem) => shuffledItem.item);
+
+        return shuffledArray;
     }
 });
