@@ -1,6 +1,56 @@
 window.addEventListener("load", function () {
-    fetch("https://bienalnuevoleon.com/wp-json/wp/v2/estudiantil")
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.log(error));
+    var baseApiUrl = "https://bienalnuevoleon.com/wp-json/wp/v2/";
+
+    fetchCategories(baseApiUrl);
+
+    function fetchCategories(base) {
+        fetch(base + "categoria_curatorial")
+            .then((res) => res.json())
+            .then((data) => {
+                var categories =
+                    data.length > 0
+                        ? data.map((cat) => {
+                              cat.id, cat.slug;
+                          })
+                        : false;
+                fetchProfesional(categories);
+            })
+            .catch((error) => console.log(error));
+    }
+
+    function fetchProfesional(categories) {
+        fetch(base + "profesional?per_page=15")
+            .then((res) => res.json())
+            .then((data) => {
+                var profesionales =
+                    data.length > 0
+                        ? data.map((post) => {
+                              post.id, post.title.rendered, post.categoria_curatorial;
+                          })
+                        : false;
+                fetchEstudiantil(categories, profesionales);
+            })
+            .catch((error) => console.log(error));
+    }
+
+    function fetchEstudiantil(categories, profesionales) {
+        fetch(base + "estudiantil?per_page=15")
+            .then((res) => res.json())
+            .then((data) => {
+                var estudiantiles =
+                    data.length > 0
+                        ? data.map((post) => {
+                              post.id, post.title.rendered, post.categoria_curatorial;
+                          })
+                        : false;
+                var posts = profesionales.concat(estudiantiles);
+                setVotingData(categories, posts);
+            })
+            .catch((error) => console.log(error));
+    }
+
+    function setVotingData(categories, posts) {
+        console.log(categories);
+        console.log(posts);
+    }
 });
