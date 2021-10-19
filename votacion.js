@@ -7,12 +7,7 @@ window.addEventListener("load", function () {
         fetch(base + "categoria_curatorial")
             .then((res) => res.json())
             .then((data) => {
-                var categories =
-                    data.length > 0
-                        ? data.map((cat) => {
-                              cat.id, cat.slug;
-                          })
-                        : false;
+                var categories = data.length > 0 ? data.map((cat) => ({ id: cat.id, slug: cat.slug })) : false;
                 fetchProfesional(base, categories);
             })
             .catch((error) => console.log(error));
@@ -22,12 +17,7 @@ window.addEventListener("load", function () {
         fetch(base + "profesional?per_page=15")
             .then((res) => res.json())
             .then((data) => {
-                var profesionales =
-                    data.length > 0
-                        ? data.map((post) => {
-                              post.id, post.title.rendered, post.categoria_curatorial;
-                          })
-                        : false;
+                var profesionales = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, category: post.categoria_curatorial })) : false;
                 fetchEstudiantil(base, categories, profesionales);
             })
             .catch((error) => console.log(error));
@@ -37,12 +27,7 @@ window.addEventListener("load", function () {
         fetch(base + "estudiantil?per_page=15")
             .then((res) => res.json())
             .then((data) => {
-                var estudiantiles =
-                    data.length > 0
-                        ? data.map((post) => {
-                              post.id, post.title.rendered, post.categoria_curatorial;
-                          })
-                        : false;
+                var estudiantiles = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, category: post.categoria_curatorial })) : false;
                 var posts = profesionales.concat(estudiantiles);
                 setVotingData(categories, posts);
             })
