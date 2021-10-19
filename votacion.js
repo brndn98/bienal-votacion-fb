@@ -22,33 +22,48 @@ window.fbAsyncInit = function () {
         }
     }); */
 
-    var votingAnchor = document.querySelector("#goto-voting");
-    if (votingAnchor) {
-        votingAnchor.addEventListener("click", function (event) {
+    var loginButton = document.querySelector("#login-voting");
+    var logoutButton = document.querySelector("#logout-voting");
+    if (loginButton) {
+        loginButton.addEventListener("click", function (event) {
             var button = event.target;
             FB.getLoginStatus(function (response) {
                 if (response.status === "connected") {
                     window.location.href = button.getAttribute("data-url") + "unauthorized.html";
                 } else {
-                    fbLogout();
-                    fbLogin();
-                    window.location.href = button.getAttribute("data-url") + "votacion.html";
+                    //fbLogout();
+                    fbLogin(button.getAttribute("data-url") + "votacion.html");
+                    //window.location.href = button.getAttribute("data-url") + "votacion.html";
                 }
             }, true);
         });
     }
+
+    if (logoutButton) {
+        loginButton.addEventListener("click", function (event) {
+            var button = event.target;
+            FB.getLoginStatus(function (response) {
+                if (response.status === "connected") {
+                    window.location.href = button.getAttribute("data-url");
+                }
+            }, true);
+            fbLogout(button.getAttribute("data-url"));
+        });
+    }
+
+    function fbLogin(url) {
+        FB.login(function (response) {
+            console.log("logged in");
+            console.log(response);
+            window.location.href = url;
+        });
+    }
+
+    function fbLogout(url) {
+        FB.logout(function (response) {
+            console.log("logged out");
+            console.log(response);
+            window.location.href = url;
+        });
+    }
 };
-
-function fbLogin() {
-    FB.login(function (response) {
-        console.log("logged in");
-        console.log(response);
-    });
-}
-
-function fbLogout() {
-    FB.logout(function (response) {
-        console.log("logged out");
-        console.log(response);
-    });
-}
