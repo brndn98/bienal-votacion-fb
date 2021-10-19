@@ -15,7 +15,7 @@ window.fbAsyncInit = function () {
             fbLogout();
             fbLogin();
         }
-    });
+    }, true);
 
     /* FB.login(function (response) {
         if (response.authResponse) {
