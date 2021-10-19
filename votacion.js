@@ -29,15 +29,15 @@ window.fbAsyncInit = function () {
 };
 
 function fbLogin() {
-    FB.login(function (res) {
+    FB.login(function (response) {
         console.log("logged in");
-        console.log(res);
+        console.log(response);
     });
 }
 
 function fbLogout() {
-    FB.logout(function (res) {
+    FB.logout(function (response) {
         console.log("logged out");
-        console.log(res);
+        console.log(response);
     });
 }
