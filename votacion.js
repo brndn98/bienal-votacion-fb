@@ -4,13 +4,7 @@ window.addEventListener("load", function () {
         mode: "no-cors",
         credentials: "omit",
     })
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
 });
