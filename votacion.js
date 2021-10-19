@@ -30,6 +30,7 @@ window.fbAsyncInit = function () {
                 if (response.status === "connected") {
                     window.location.href = button.getAttribute("data-url") + "unauthorized.html";
                 } else {
+                    fbLogout();
                     fbLogin();
                     window.location.href = button.getAttribute("data-url") + "votacion.html";
                 }
