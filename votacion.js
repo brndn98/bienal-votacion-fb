@@ -31,23 +31,21 @@ window.fbAsyncInit = function () {
                 if (response.status === "connected") {
                     window.location.href = button.getAttribute("data-url") + "unauthorized.html";
                 } else {
-                    //fbLogout();
                     fbLogin(button.getAttribute("data-url") + "votacion.html");
-                    //window.location.href = button.getAttribute("data-url") + "votacion.html";
                 }
             }, true);
         });
     }
 
     if (logoutButton) {
-        loginButton.addEventListener("click", function (event) {
+        logoutButton.addEventListener("click", function (event) {
             var button = event.target;
             FB.getLoginStatus(function (response) {
                 if (response.status === "connected") {
-                    window.location.href = button.getAttribute("data-url");
+                    fbLogout(button.getAttribute("data-url"));
                 }
             }, true);
-            fbLogout(button.getAttribute("data-url"));
+            //fbLogout(button.getAttribute("data-url"));
         });
     }
 
