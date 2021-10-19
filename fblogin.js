@@ -15,7 +15,7 @@ window.fbAsyncInit = function () {
             if (response.status === "connected") {
                 votingContainer.setAttribute("data-user", response.authResponse.userID);
                 if (checkforVote(response.authResponse.userID)) {
-                    window.location.href = url + "unauthorized.html";
+                    window.location.href = votingContainer.setAttribute("data-url") + "unauthorized.html";
                 }
             } else {
                 window.location.href = votingContainer.getAttribute("data-url");
