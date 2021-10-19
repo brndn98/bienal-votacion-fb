@@ -12,6 +12,7 @@ window.fbAsyncInit = function () {
         if (response.status === "connected") {
             fbLogout();
         } else {
+            fbLogout();
             fbLogin();
         }
     });
