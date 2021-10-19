@@ -9,13 +9,7 @@ window.fbAsyncInit = function () {
     // checks if user is already logged in on facebook
     FB.getLoginStatus(function (response) {
         console.log(response);
-        if (response.status === "connected") {
-            fbLogout();
-        } else {
-            fbLogout();
-            fbLogin();
-        }
-    }, true);
+    });
 
     /* FB.login(function (response) {
         if (response.authResponse) {
@@ -27,6 +21,21 @@ window.fbAsyncInit = function () {
             console.log("User cancelled login or did not fully authorize.");
         }
     }); */
+
+    var votingAnchor = document.querySelector("#goto-voting");
+    if (votingAnchor) {
+        votingAnchor.addEventListener("click", function (event) {
+            var button = event.target;
+            FB.getLoginStatus(function (response) {
+                if (response.status === "connected") {
+                    window.location.href = button.getAttribute("data-url") + "unauthorized.html";
+                } else {
+                    fbLogin();
+                    window.location.href = button.getAttribute("data-url") + "votacion.html";
+                }
+            }, true);
+        });
+    }
 };
 
 function fbLogin() {
