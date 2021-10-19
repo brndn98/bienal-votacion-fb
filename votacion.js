@@ -1,4 +1,4 @@
-window.addEventListener("click", function () {
+window.addEventListener("load", function () {
     fetch("http://bienalnuevoleon.com/wp-json/wp/v2/estudiantil")
         .then(function (response) {
             return response.json();
