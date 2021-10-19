@@ -62,6 +62,7 @@ window.addEventListener("load", function () {
                     post: post.title,
                 };
                 sessionStorage.setItem("bienal-vote", JSON.stringify(vote));
+                window.location.href = container.getAttribute("data-url");
             });
 
             div.appendChild(p);

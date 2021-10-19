@@ -14,6 +14,9 @@ window.fbAsyncInit = function () {
         if (votingContainer) {
             if (response.status === "connected") {
                 votingContainer.setAttribute("data-user", response.authResponse.userID);
+                if (checkforVote(response.authResponse.userID)) {
+                    window.location.href = url + "unauthorized.html";
+                }
             } else {
                 window.location.href = votingContainer.getAttribute("data-url");
             }
@@ -38,9 +41,9 @@ window.fbAsyncInit = function () {
             var button = event.target;
             FB.getLoginStatus(function (response) {
                 if (response.status === "connected") {
-                    window.location.href = button.getAttribute("data-url") + "unauthorized.html";
+                    window.location.href = button.getAttribute("data-url") + "votacion.html";
                 } else {
-                    fbLogin(button.getAttribute("data-url") + "votacion.html");
+                    fbLogin(button.getAttribute("data-url"));
                 }
             }, true);
         });
@@ -62,7 +65,11 @@ window.fbAsyncInit = function () {
         FB.login(function (response) {
             console.log("logged in");
             console.log(response);
-            window.location.href = url;
+            if (checkforVote(response.authResponse.userID)) {
+                window.location.href = url + "unauthorized.html";
+            } else {
+                window.location.href = url + "votacion.html";
+            }
         });
     }
 
@@ -72,5 +79,16 @@ window.fbAsyncInit = function () {
             console.log(response);
             window.location.href = url;
         });
+    }
+
+    function checkforVote(user) {
+        var sessionItem = sessionStorage.getItem("bienal-vote");
+        if (sessionItem) {
+            var vote = JSON.parse(sessionItem);
+            if (vote.user == user) {
+                return true;
+            }
+        }
+        return false;
     }
 };
