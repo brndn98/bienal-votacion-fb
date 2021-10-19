@@ -10,15 +10,9 @@ window.fbAsyncInit = function () {
     FB.getLoginStatus(function (response) {
         console.log(response);
         if (response.status === "connected") {
-            FB.logout(function (res) {
-                console.log("logged out");
-                console.log(res);
-            });
+            fbLogout();
         } else {
-            FB.login(function (res) {
-                console.log("logged in");
-                console.log(res);
-            });
+            fbLogin();
         }
     });
 
@@ -33,3 +27,17 @@ window.fbAsyncInit = function () {
         }
     }); */
 };
+
+function fbLogin() {
+    FB.login(function (res) {
+        console.log("logged in");
+        console.log(res);
+    });
+}
+
+function fbLogout() {
+    FB.logout(function (res) {
+        console.log("logged out");
+        console.log(res);
+    });
+}
