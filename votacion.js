@@ -56,8 +56,9 @@ window.addEventListener("load", function () {
                     var current = catContainer.querySelector(".btn-active");
                     if (current) current.className = current.className.replace(" btn-active", "");
                     button.className += " btn-active";
+                    container.setAttribute("data-category", button.textContent.toLowerCase());
                     var categoryId = parseInt(button.getAttribute("data-id"), 10);
-                    renderPosts(shuffled, categoryId);
+                    renderPosts(shuffled, categoryId, capture);
                 }
             });
             catContainer.appendChild(cat);
@@ -68,12 +69,14 @@ window.addEventListener("load", function () {
             };
         });
 
-        renderPosts(shuffled, categories[0].id);
+        container.setAttribute("data-category", categories[0].slug);
+        renderPosts(shuffled, categories[0].id, capture);
 
         renderVoteCapture(capture);
     }
 
-    function renderPosts(posts, category) {
+    function renderPosts(posts, category, capture) {
+        var catSlug = document.querySelector("#voting-container").getAttribute("data-category");
         var container = {
             profesional: document.querySelector("#voting-profesional"),
             estudiantil: document.querySelector("#voting-estudiantil"),
@@ -97,15 +100,21 @@ window.addEventListener("load", function () {
             v.textContent = "votar";
             v.addEventListener("click", function (event) {
                 var button = event.target;
-                button.className += " btn-cbx-active";
-                alert("proyecto " + post.id + " seleccionado");
-                var userID = container.getAttribute("data-user");
-                var vote = {
-                    user: userID,
-                    post: post.title,
-                };
-                sessionStorage.setItem("bienal-vote", JSON.stringify(vote));
-                window.location.href = container.getAttribute("data-url");
+                if (button.className.indexOf("btn-cbx-active") === -1) {
+                    var current = container[post.type].querySelector(".btn-cbx-active");
+                    if (current) current.className = current.className.replace(" btn-cbx-active", "");
+                    button.className += " btn-cbx-active";
+                    //alert("proyecto " + post.id + " seleccionado");
+                    //var userID = container.getAttribute("data-user");
+                    /* var vote = {
+                        user: userID,
+                        post: post.title,
+                    };
+                    sessionStorage.setItem("bienal-vote", JSON.stringify(vote));
+                    window.location.href = container.getAttribute("data-url"); */
+                    capture.vote[catSlug][post.type] = post.title;
+                    renderVoteCapture(capture);
+                }
             });
 
             div.appendChild(p);
@@ -117,6 +126,12 @@ window.addEventListener("load", function () {
 
     function renderVoteCapture(capture) {
         var captureContainer = document.querySelector("#voting-object");
+        captureContainer.innerHTML = "";
+
+        var containerTitle = document.createElement("h3");
+        containerTitle.className = "mv-s c-red t-18";
+        containerTitle.textContent = "Voto capturado";
+        captureContainer.appendChild(containerTitle);
 
         var userInfo = document.createElement("div");
         userInfo.className = "mv-m";
