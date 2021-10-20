@@ -125,6 +125,7 @@ window.addEventListener("load", function () {
         userTitle.textContent = "Usuario";
         var userId = document.createElement("p");
         userId.className = "mh-s";
+        userId.textContent = capture.user;
         userInfo.appendChild(userTitle);
         userInfo.appendChild(userId);
 
