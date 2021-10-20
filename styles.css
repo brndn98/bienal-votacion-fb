@@ -174,7 +174,7 @@ button {
     background-color: #eee;
     color: #1c1c1c;
     border-bottom: 2px solid #eee;
-    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+    transition: background-color 0.1s ease-out, color 0.1s ease-out;
 }
 .btn:hover,
 .btn:focus,
@@ -188,7 +188,7 @@ button {
     background-color: #eee;
     color: #1c1c1c;
     border-bottom: 2px solid #eee;
-    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+    transition: background-color 0.1s ease-out, color 0.1s ease-out;
 }
 .btn-slim:hover,
 .btn-slim:focus,
@@ -198,11 +198,11 @@ button {
 }
 /* checkbox button */
 .btn-cbx {
-    padding: 8px 10px;
+    padding: 5px 8px;
     background-color: unset;
     border: 2px solid #eee;
     color: #eee;
-    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+    transition: background-color 0.1s ease-out, color 0.1s ease-out;
 }
 .btn-cbx:hover,
 .btn-cbx:focus,

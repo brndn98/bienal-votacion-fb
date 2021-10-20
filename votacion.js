@@ -48,9 +48,9 @@ window.addEventListener("load", function () {
             div.className = "mv-s";
             var p = document.createElement("p");
             p.className = "d-inline-block";
-            p.textContent = post.id + " - " + post.title + " - ";
+            p.textContent = post.id + " - " + post.title;
             var v = document.createElement("button");
-            v.className = "btn-cbx";
+            v.className = "btn-cbx mh-s";
             v.textContent = "votar";
             v.addEventListener("click", function (event) {
                 var button = event.target;
