@@ -75,7 +75,7 @@ window.addEventListener("load", function () {
 
         filtered.forEach((post) => {
             var div = document.createElement("div");
-            div.className = "mv-m d-flex flex-center-v";
+            div.className = "mv-l d-flex flex-center-v";
             var p = document.createElement("p");
             p.className = "d-inline-block";
             p.textContent = post.id + " - " + post.title;
