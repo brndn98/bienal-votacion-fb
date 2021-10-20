@@ -7,6 +7,19 @@ body {
     font-size: 14px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    margin: 0;
+    padding: 0;
+}
+
+/** LAYOUT **/
 .wrap {
     width: 100vw;
     height: 100vh;
@@ -21,4 +34,60 @@ body {
     padding: 22px;
     border-radius: 5px;
     background-color: #1c1c1c;
+}
+
+/** MARGINS **/
+/* vertical */
+.mv-s {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.mv-m {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+.mv-l {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+/* horizontal */
+.mh-s {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.mh-m {
+    margin-left: 18px;
+    margin-right: 18px;
+}
+.mh-l {
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+/** PADDINGS **/
+/* vertical */
+.pv-s {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.pv-m {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+.pv-l {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+/* horizontal */
+.ph-s {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.ph-m {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.ph-l {
+    padding-left: 24px;
+    padding-right: 24px;
 }
