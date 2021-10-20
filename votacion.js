@@ -73,6 +73,14 @@ window.addEventListener("load", function () {
         renderPosts(shuffled, categories[0].id, capture);
 
         renderVoteCapture(capture);
+
+        var finishVoting = document.querySelector("#finish-voting");
+        if (finishVoting) {
+            finishVoting.addEventListener("click", function () {
+                sessionStorage.setItem("bienal-vote", JSON.stringify(capture));
+                window.location.href = container.getAttribute("data-url");
+            });
+        }
     }
 
     function renderPosts(posts, category, capture) {
