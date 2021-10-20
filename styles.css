@@ -131,7 +131,7 @@ button {
 }
 
 .content {
-    width: 40%;
+    max-width: 50%;
     max-height: 80%;
     padding: 22px;
     border-radius: 5px;
