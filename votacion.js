@@ -146,7 +146,7 @@ window.addEventListener("load", function () {
             voteCategory.appendChild(categoryTitle);
             for (var type in capture.vote[key]) {
                 var cat = document.createElement("div");
-                cat.className = "mh-s";
+                cat.className = "mv-s mh-s";
                 var catTitle = document.createElement("p");
                 catTitle.className = "t-14 c-gray";
                 catTitle.textContent = type;
