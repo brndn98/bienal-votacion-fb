@@ -62,7 +62,7 @@ window.addEventListener("load", function () {
             });
             catContainer.appendChild(cat);
 
-            capture.vote[category.slug] = {
+            capture["vote"][category.slug] = {
                 profesional: false,
                 estudiantil: false,
             };
