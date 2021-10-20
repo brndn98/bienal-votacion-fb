@@ -19,8 +19,17 @@
                 <button id="logout-voting" class="btn-slim mh-m" data-url="https://brndn98.github.io/bienal-votacion-fb/">Salir de la votacion</button>
             </div>
             <div id="voting-categories" class="d-flex flex-center-v flex-wrap mv-m"></div>
-            <h3 class="mv-s c-gray">Proyectos de <span id="voting-helper"></span></h3>
-            <div id="voting-container" class="scroll-v mv-m" data-user="" data-url="https://brndn98.github.io/bienal-votacion-fb/"></div>
+            <h3 class="mv-s c-gray">Proyectos de <span id="voting-helper">(cargando...)</span></h3>
+            <div id="voting-container" class="mv-m d-flex" data-user="" data-url="https://brndn98.github.io/bienal-votacion-fb/">
+                <div class="mh-s">
+                    <h3 class="c-red mv-s">Profesional</h3>
+                    <div id="voting-profesional" class="scroll-v"></div>
+                </div>
+                <div class="mh-s">
+                    <h3 class="c-red mv-s">Estudiantil</h3>
+                    <div id="voting-estudiantil" class="scroll-v"></div>
+                </div>
+            </div>
         </div>
     </div>
 

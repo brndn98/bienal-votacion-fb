@@ -107,6 +107,9 @@ button {
 .c-white {
     color: #eee;
 }
+.c-red {
+    color: #e00a0b;
+}
 /* background color */
 .bg-black {
     background-color: #1c1c1c;
@@ -119,6 +122,9 @@ button {
 }
 .bg-white {
     background-color: #eee;
+}
+.bg-red {
+    background-color: #e00a0b;
 }
 
 /** LAYOUT **/

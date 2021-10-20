@@ -14,7 +14,7 @@ window.addEventListener("load", function () {
     }
 
     function fetchProfesional(base, categories) {
-        fetch(base + "profesional?per_page=15")
+        fetch(base + "profesional?per_page=25")
             .then((res) => res.json())
             .then((data) => {
                 var profesionales = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, type: post.type, category: post.categoria_curatorial })) : false;
@@ -24,7 +24,7 @@ window.addEventListener("load", function () {
     }
 
     function fetchEstudiantil(base, categories, profesionales) {
-        fetch(base + "estudiantil?per_page=15")
+        fetch(base + "estudiantil?per_page=25")
             .then((res) => res.json())
             .then((data) => {
                 var estudiantiles = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, type: post.type, category: post.categoria_curatorial })) : false;
@@ -65,13 +65,18 @@ window.addEventListener("load", function () {
     }
 
     function renderPosts(posts, category) {
-        var container = document.querySelector("#voting-container");
+        // var container = document.querySelector("#voting-container");
+        var container = {
+            profesional: document.querySelector("#voting-profesional"),
+            estudiantil: document.querySelector("#voting-estudiantil"),
+        };
         var filtered = posts.filter((post) => {
             return existsInArray(post.category, category);
         });
         console.log(filtered);
 
-        container.innerHTML = "";
+        container.profesional.innerHTML = "";
+        container.estudiantil.innerHTML = "";
 
         filtered.forEach((post) => {
             var div = document.createElement("div");
@@ -98,7 +103,7 @@ window.addEventListener("load", function () {
             div.appendChild(p);
             div.appendChild(v);
 
-            container.appendChild(div);
+            container[post.type].appendChild(div);
         });
     }
 
