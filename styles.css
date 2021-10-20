@@ -25,6 +25,46 @@ button {
     padding: 10px 15px;
     font-weight: 600;
     text-align: center;
+    font-size: 16px;
+}
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #424242;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #eee;
+}
+
+/** RESETTERS **/
+/* display */
+.d-block {
+    display: block;
+}
+.d-inline-block {
+    display: inline-block;
+}
+.d-inline {
+    display: inline;
+}
+.d-flex {
+    display: flex;
+}
+/* flex */
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+.flex-center-v {
+    align-items: center;
+}
+.flex-center-h {
+    justify-content: center;
 }
 
 /** COLORS **/
@@ -64,6 +104,10 @@ button {
     padding: 22px;
     border-radius: 5px;
     background-color: #1c1c1c;
+}
+/* content layout */
+.scroll-v {
+    overflow-y: scroll;
 }
 
 /** MARGINS **/

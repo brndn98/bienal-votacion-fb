@@ -5,15 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienal | Concurso</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <script src="./fblogin.js"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-    <h1>Bienal - votacion</h1>
-    <p>Estas en la pantalla de votacion</p>
-    <button id="logout-voting" data-url="https://brndn98.github.io/bienal-votacion-fb/">Salir de la votacion</button>
 
-    <div id="voting-container" data-user="" data-url="https://brndn98.github.io/bienal-votacion-fb/"></div>
+    <div class="wrap">
+        <div class="content">
+            <h1 class="mv-m">Bienal - votacion</h1>
+            <div class="d-flex flex-center-v mv-m">
+                <p class="d-inline-block">Estas en la pantalla de votacion</p>
+                <button id="logout-voting" class="btn mh-m" data-url="https://brndn98.github.io/bienal-votacion-fb/">Salir de la votacion</button>
+            </div>
+            <div id="voting-container" class="scroll-v" data-user="" data-url="https://brndn98.github.io/bienal-votacion-fb/"></div>
+        </div>
+    </div>
 
     <script src="./votacion.js"></script>
 </body>
