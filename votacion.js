@@ -70,7 +70,7 @@ window.addEventListener("load", function () {
 
         renderPosts(shuffled, categories[0].id);
 
-        console.log(capture);
+        renderVoteCapture(capture);
     }
 
     function renderPosts(posts, category) {
@@ -113,6 +113,22 @@ window.addEventListener("load", function () {
 
             container[post.type].appendChild(div);
         });
+    }
+
+    function renderVoteCapture(capture) {
+        var captureContainer = document.querySelector("#voting-object");
+
+        var userInfo = document.createElement("div");
+        userInfo.className = "mv-m";
+        var userTitle = document.createElement("p");
+        userTitle.className = "t-12 c-gray";
+        userTitle.textContent = "Usuario";
+        var userId = document.createElement("p");
+        userId.className = "mh-s";
+        userInfo.appendChild(userTitle);
+        userInfo.appendChild(userId);
+
+        captureContainer.appendChild(userInfo);
     }
 
     function existsInArray(array, find) {
