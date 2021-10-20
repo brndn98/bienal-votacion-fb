@@ -10,15 +10,18 @@
 <body>
     <script src="./fblogin.js"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-    
+
     <div class="wrap">
         <div class="content">
             <h1 class="mv-m">Bienal | Concurso</h1>
             <div class="mv-s">
                 <h3 class="d-inline-block">Tu voto ya ha asido registrado.</h3>
                 <button id="remove-vote" class="btn-slim mh-s" data-url="https://brndn98.github.io/bienal-votacion-fb/">Eliminar voto</button>
+                <div id="vote-object" class="mv-m scroll-v" style="width: 300px;"></div>
             </div>
         </div>
     </div>
+
+    <script src="./unauthorized.js"></script>
 </body>
 </html>
