@@ -39,9 +39,24 @@ window.addEventListener("load", function () {
         console.log(posts);
 
         var container = document.querySelector("#voting-container");
+        var catContainer = document.querySelector("#voting-categories");
 
-        var filtered = posts.filter((post) => post.category.length > 0);
-        var shuffled = shuffleArray(filtered);
+        categories.forEach((category, cIndex) => {
+            var cat = document.createElement("button");
+            cat.className = cIndex == 0 ? "btn mv-s mh-s btn-active" : "btn mv-s mh-s";
+            cat.setAttribute("data-id", category.id);
+            cat.textContent = category.slug.toUpperCase();
+            cat.addEventListener("click", function (event) {
+                var button = event.target;
+                var current = catContainer.querySelector(".btn-active");
+                if (current) current.className = current.className.replace(" btn-active", "");
+                button.className += " btn-active";
+            });
+            catContainer.appendChild(cat);
+        });
+
+        var cleaned = posts.filter((post) => post.category.length > 0);
+        var shuffled = shuffleArray(cleaned);
 
         shuffled.forEach((post) => {
             var div = document.createElement("div");

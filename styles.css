@@ -27,6 +27,7 @@ button {
     font-weight: 600;
     text-align: center;
     font-size: 16px;
+    cursor: pointer;
 }
 /* scrollbar */
 ::-webkit-scrollbar {
@@ -68,6 +69,27 @@ button {
     justify-content: center;
 }
 
+/** TEXT **/
+/* size */
+.t-10 {
+    font-size: 10px;
+}
+.t-12 {
+    font-size: 12px;
+}
+.t-14 {
+    font-size: 14px;
+}
+.t-16 {
+    font-size: 16px;
+}
+.t-18 {
+    font-size: 18px;
+}
+.t-20 {
+    font-size: 20px;
+}
+
 /** COLORS **/
 /* text color */
 .c-black {
@@ -75,6 +97,9 @@ button {
 }
 .c-ligh-black {
     color: #333;
+}
+.c-gray {
+    color: #424242;
 }
 .c-white {
     color: #eee;
@@ -85,6 +110,9 @@ button {
 }
 .bg-ligh-black {
     background-color: #333;
+}
+.bg-gray {
+    background-color: #424242;
 }
 .bg-white {
     background-color: #eee;
@@ -101,7 +129,7 @@ button {
 
 .content {
     width: 40%;
-    max-height: 70%;
+    max-height: 80%;
     padding: 22px;
     border-radius: 5px;
     background-color: #1c1c1c;
