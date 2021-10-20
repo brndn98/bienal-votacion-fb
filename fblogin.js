@@ -23,17 +23,6 @@ window.fbAsyncInit = function () {
         }
     });
 
-    /* FB.login(function (response) {
-        if (response.authResponse) {
-            console.log("Welcome!  Fetching your information.... ");
-            FB.api("/me", function (response) {
-                console.log("Good to see you, " + response.name + ".");
-            });
-        } else {
-            console.log("User cancelled login or did not fully authorize.");
-        }
-    }); */
-
     var loginButton = document.querySelector("#login-voting");
     var logoutButton = document.querySelector("#logout-voting");
     if (loginButton) {
@@ -57,7 +46,6 @@ window.fbAsyncInit = function () {
                     fbLogout(button.getAttribute("data-url"));
                 }
             }, true);
-            //fbLogout(button.getAttribute("data-url"));
         });
     }
 
@@ -85,9 +73,7 @@ window.fbAsyncInit = function () {
         var sessionItem = sessionStorage.getItem("bienal-vote");
         if (sessionItem) {
             var vote = JSON.parse(sessionItem);
-            if (vote.user == user) {
-                return true;
-            }
+            return vote.user == user;
         }
         return false;
     }

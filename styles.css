@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: #ccc;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+}
+
+.wrap {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 50%;
+    max-height: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1c1c1c;
+}
