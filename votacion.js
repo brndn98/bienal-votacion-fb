@@ -35,11 +35,11 @@ window.addEventListener("load", function () {
     }
 
     function setVotingData(categories, posts) {
-        console.log(categories);
-        console.log(posts);
-
-        var container = document.querySelector("#voting-container");
         var catContainer = document.querySelector("#voting-categories");
+        var helper = document.querySelector("#voting-helper");
+
+        var cleaned = posts.filter((post) => post.category.length > 0);
+        var shuffled = shuffleArray(cleaned);
 
         categories.forEach((category, cIndex) => {
             var cat = document.createElement("button");
@@ -48,17 +48,32 @@ window.addEventListener("load", function () {
             cat.textContent = category.slug.toUpperCase();
             cat.addEventListener("click", function (event) {
                 var button = event.target;
-                var current = catContainer.querySelector(".btn-active");
-                if (current) current.className = current.className.replace(" btn-active", "");
-                button.className += " btn-active";
+                if (button.className.indexOf("btn-active") === -1) {
+                    var current = catContainer.querySelector(".btn-active");
+                    if (current) current.className = current.className.replace(" btn-active", "");
+                    button.className += " btn-active";
+                    helper.textContent = button.textContent.toLowerCase();
+                    var categoryId = parseInt(button.getAttribute("data-id"), 10);
+                    renderPosts(shuffled, categoryId);
+                }
             });
             catContainer.appendChild(cat);
         });
 
-        var cleaned = posts.filter((post) => post.category.length > 0);
-        var shuffled = shuffleArray(cleaned);
+        helper.textContent = categories[0].slug;
+        renderPosts(shuffled, categories[0].id);
+    }
 
-        shuffled.forEach((post) => {
+    function renderPosts(posts, category) {
+        var container = document.querySelector("#voting-container");
+        var filtered = posts.filter((post) => {
+            return existsInArray(post.category, category);
+        });
+        console.log(filtered);
+
+        container.innerHTML = "";
+
+        filtered.forEach((post) => {
             var div = document.createElement("div");
             div.className = "mv-s";
             var p = document.createElement("p");
@@ -85,6 +100,13 @@ window.addEventListener("load", function () {
 
             container.appendChild(div);
         });
+    }
+
+    function existsInArray(array, find) {
+        for (var i = 0; i < array.length; i++) {
+            if (find == array[i]) return true;
+        }
+        return false;
     }
 
     function shuffleArray(array) {
