@@ -36,6 +36,11 @@ window.addEventListener("load", function () {
 
     function setVotingData(categories, posts) {
         var catContainer = document.querySelector("#voting-categories");
+        var container = document.querySelector("#voting-container");
+        var capture = {
+            user: container.getAttribute("data-user"),
+            vote: false,
+        };
 
         var cleaned = posts.filter((post) => post.category.length > 0);
         var shuffled = shuffleArray(cleaned);
@@ -56,9 +61,16 @@ window.addEventListener("load", function () {
                 }
             });
             catContainer.appendChild(cat);
+
+            capture.vote[category.slug] = {
+                profesional: false,
+                estudiantil: false,
+            };
         });
 
         renderPosts(shuffled, categories[0].id);
+
+        console.log(capture);
     }
 
     function renderPosts(posts, category) {

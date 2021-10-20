@@ -161,6 +161,15 @@ button {
 .w-25 {
     width: 25%;
 }
+.w-20 {
+    width: 20%;
+}
+.w-15 {
+    width: 15%;
+}
+.w-10 {
+    width: 10%;
+}
 
 /** MARGINS **/
 /* vertical */
