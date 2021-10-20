@@ -68,6 +68,9 @@ button {
 .flex-center-h {
     justify-content: center;
 }
+.flex-wrap {
+    flex-wrap: wrap;
+}
 
 /** TEXT **/
 /* size */
