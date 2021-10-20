@@ -39,7 +39,7 @@ window.addEventListener("load", function () {
         var container = document.querySelector("#voting-container");
         var capture = {
             user: container.getAttribute("data-user"),
-            vote: false,
+            vote: {},
         };
 
         var cleaned = posts.filter((post) => post.category.length > 0);
@@ -62,7 +62,7 @@ window.addEventListener("load", function () {
             });
             catContainer.appendChild(cat);
 
-            capture["vote"][category.slug] = {
+            capture.vote[category.slug] = {
                 profesional: false,
                 estudiantil: false,
             };
