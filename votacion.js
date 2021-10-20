@@ -45,16 +45,16 @@ window.addEventListener("load", function () {
 
         shuffled.forEach((post) => {
             var div = document.createElement("div");
-
+            div.className = "mv-s";
             var p = document.createElement("p");
-            p.style.display = "inline-block";
-            var b = document.createElement("b");
-            b.textContent = post.id + " - " + post.title + " - ";
-            p.appendChild(b);
+            p.className = "d-inline-block";
+            p.textContent = post.id + " - " + post.title + " - ";
             var v = document.createElement("button");
+            v.className = "btn-cbx";
             v.textContent = "votar";
             v.addEventListener("click", function (event) {
                 var button = event.target;
+                button.className += " btn-cbx-active";
                 alert("proyecto " + post.id + " seleccionado");
                 var userID = container.getAttribute("data-user");
                 var vote = {
