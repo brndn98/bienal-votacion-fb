@@ -246,6 +246,20 @@ button {
     background-color: #333;
     color: #eee;
 }
+/* warning button */
+.btn-warning {
+    padding: 5px 8px;
+    background-color: #e00a0b;
+    color: #eee;
+    border-bottom: 2px solid #e00a0b;
+    transition: background-color 0.1s ease-out, color 0.1s ease-out;
+}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning-active {
+    background-color: #333;
+    color: #e00a0b;
+}
 /* checkbox button */
 .btn-cbx {
     padding: 5px 8px;
