@@ -96,7 +96,7 @@ window.addEventListener("load", function () {
             p.className = "d-inline-block";
             p.textContent = post.id + " - " + post.title;
             var v = document.createElement("button");
-            v.className = "btn-cbx mh-s";
+            v.className = capture.vote[catSlug][post.type] == post.title ? "btn-cbx mh-s btn-cbx-active" : "btn-cbx mh-s";
             v.textContent = "votar";
             v.addEventListener("click", function (event) {
                 var button = event.target;
