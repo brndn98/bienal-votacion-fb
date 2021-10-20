@@ -14,7 +14,7 @@ window.addEventListener("load", function () {
     }
 
     function fetchProfesional(base, categories) {
-        fetch(base + "profesional?per_page=25")
+        fetch(base + "profesional?per_page=30")
             .then((res) => res.json())
             .then((data) => {
                 var profesionales = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, type: post.type, category: post.categoria_curatorial })) : false;
@@ -24,7 +24,7 @@ window.addEventListener("load", function () {
     }
 
     function fetchEstudiantil(base, categories, profesionales) {
-        fetch(base + "estudiantil?per_page=25")
+        fetch(base + "estudiantil?per_page=30")
             .then((res) => res.json())
             .then((data) => {
                 var estudiantiles = data.length > 0 ? data.map((post) => ({ id: post.id, title: post.title.rendered, type: post.type, category: post.categoria_curatorial })) : false;
