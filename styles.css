@@ -115,19 +115,19 @@ a {
 }
 
 /** BUTTONS **/
+/* regular button */
 .btn {
     display: inline-block;
-    border: none;
     border-radius: 5px;
     padding: 10px 15px;
     text-align: center;
     background-color: #eee;
     color: #1c1c1c;
+    border-bottom: 2px solid #eee;
     transition: background-color 0.2s ease-out, color 0.2s ease-out;
 }
 .btn:hover,
 .btn:focus {
     background-color: #333;
     color: #eee;
-    border-bottom: 2px solid #eee;
 }
