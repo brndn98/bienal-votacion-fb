@@ -25,6 +25,8 @@ window.fbAsyncInit = function () {
 
     var loginButton = document.querySelector("#login-voting");
     var logoutButton = document.querySelector("#logout-voting");
+    var removeButton = document.querySelector("#remove-vote");
+
     if (loginButton) {
         loginButton.addEventListener("click", function (event) {
             var button = event.target;
@@ -46,6 +48,14 @@ window.fbAsyncInit = function () {
                     fbLogout(button.getAttribute("data-url"));
                 }
             }, true);
+        });
+    }
+
+    if (removeButton) {
+        removeButton.addEventListener("click", function (event) {
+            var button = event.target;
+            sessionStorage.removeItem("bienal-vote");
+            window.location.href = button.getAttribute("data-url");
         });
     }
 
