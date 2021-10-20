@@ -36,7 +36,6 @@ window.addEventListener("load", function () {
 
     function setVotingData(categories, posts) {
         var catContainer = document.querySelector("#voting-categories");
-        var helper = document.querySelector("#voting-helper");
 
         var cleaned = posts.filter((post) => post.category.length > 0);
         var shuffled = shuffleArray(cleaned);
@@ -52,7 +51,6 @@ window.addEventListener("load", function () {
                     var current = catContainer.querySelector(".btn-active");
                     if (current) current.className = current.className.replace(" btn-active", "");
                     button.className += " btn-active";
-                    helper.textContent = button.textContent.toLowerCase();
                     var categoryId = parseInt(button.getAttribute("data-id"), 10);
                     renderPosts(shuffled, categoryId);
                 }
@@ -60,12 +58,10 @@ window.addEventListener("load", function () {
             catContainer.appendChild(cat);
         });
 
-        helper.textContent = categories[0].slug;
         renderPosts(shuffled, categories[0].id);
     }
 
     function renderPosts(posts, category) {
-        // var container = document.querySelector("#voting-container");
         var container = {
             profesional: document.querySelector("#voting-profesional"),
             estudiantil: document.querySelector("#voting-estudiantil"),
@@ -80,7 +76,7 @@ window.addEventListener("load", function () {
 
         filtered.forEach((post) => {
             var div = document.createElement("div");
-            div.className = "mv-l d-flex flex-center-v";
+            div.className = "pv-l d-flex flex-center-v highlight";
             var p = document.createElement("p");
             p.className = "d-inline-block";
             p.textContent = post.id + " - " + post.title;

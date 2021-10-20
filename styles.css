@@ -102,7 +102,7 @@ button {
     color: #333;
 }
 .c-gray {
-    color: #424242;
+    color: #4e4e4e;
 }
 .c-white {
     color: #eee;
@@ -118,7 +118,7 @@ button {
     background-color: #333;
 }
 .bg-gray {
-    background-color: #424242;
+    background-color: #4e4e4e;
 }
 .bg-white {
     background-color: #eee;
@@ -246,4 +246,10 @@ button {
 .btn-cbx-active {
     background-color: #eee;
     color: #1c1c1c;
+}
+
+/** DUNNO **/
+
+.highlight:hover {
+    background-color: #333;
 }
